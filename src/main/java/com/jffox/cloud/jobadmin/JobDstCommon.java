@@ -26,7 +26,7 @@ import java.util.Properties;
  * @author yanggang
  * @version 1.0
  * @date 2019-11-01
- * @describe  公共数据计算job入口
+ * @describe 公共数据计算job入口
  * @since jdk 1.8
  */
 @Slf4j
@@ -70,13 +70,16 @@ public class JobDstCommon {
              * */
             //env.setStateBackend(new FsStateBackend("hdfs:///flink/checkpoints/" + flinkJobName));
             env.setStateBackend(new RocksDBStateBackend("hdfs:///flink/checkpoints/" + flinkJobName));
-            /*kafka数据源加载配置*/
+            /**
+             * kafka数据源加载配置*/
             kafkaConsumerProperties = KafkaConsumerConfig.getConfig(args, envConfig);
             List<String> topicList = new ArrayList<>();
             topicList = SourceMapping.getTopicList(1);
 
             DataStream<String> stream = Kafka.consumer(env, kafkaConsumerProperties, topicList, params).uid(flinkJobName + "-consumer").shuffle();
-            /*数据流dst-operations*/
+            /**
+             * 数据流dst-operations
+             * */
             stream.filter(new FunFilterFunction()).uid(flinkJobName + "-filter").shuffle()
                     .map(new FunMapFunction()).uid(flinkJobName + "-map").shuffle()
                     .flatMap(new FunFlatMapFunction()).uid(flinkJobName + "-flatMap").shuffle()
