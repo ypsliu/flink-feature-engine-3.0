@@ -7,9 +7,11 @@ import java.util.*;
 /**
  * 日期处理工具类
  *
- * @author chenjun
+ * @author yanggang
  * @version 1.0
  * @date 2016年3月23日下午1:49:31
+ * @describe 日期处理工具类
+ * @since jdk 1.8
  */
 public class DateUtils {
     private static String ymdhms = "yyyy-MM-dd HH:mm:ss";
@@ -680,13 +682,14 @@ public class DateUtils {
 
     /**
      * 判断是否是当天
+     *
      * @param time 格式：yyyy-MM-dd HH:mm:ss或yyyy-MM-dd
      * @return
      */
     public static boolean isCurrentDay(String time) {
         if (time == null) return false;
         if (time.length() > 10) {
-            time = time.substring(0,10);
+            time = time.substring(0, 10);
         }
         if (getCurrentYmdWithHyph().equals(time)) {
             return true;
@@ -696,11 +699,12 @@ public class DateUtils {
 
     /**
      * 获取从开始时间到现在的秒数
+     *
      * @param startTime
      * @return
      */
-    public  static Double getTimeInterval(Long startTime){
-        return MathUtil.div((System.currentTimeMillis() - startTime),1000d);
+    public static Double getTimeInterval(Long startTime) {
+        return MathUtil.div((System.currentTimeMillis() - startTime), 1000d);
     }
 
     public static void main(String[] args) {

@@ -14,30 +14,44 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * @author yanggang
+ * @version 1.0
+ * @date 2019-11-01
+ * @describe 业务数据计算job入口
+ * @since jdk 1.8
+ */
 @Slf4j
 public class JobDstBusiness {
 
-
+    /**
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
-       // final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        // final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
 
 
         ParameterTool params = ParameterTool.fromArgs(args);
 
-        /** 配置信息 */
+        /**
+         * 配置信息
+         * */
         int parall = params.getInt("parall", 5);
         String kafkaGroup = params.get("kafkaGroup", "dl_cert_feature_bs_on_group");
         String jobName = params.get("jobName", "dl_cert_feature_bs_on");
 
         env.setParallelism(parall);
 
-        /**参数*/
+        /**参数
+         * */
         Configuration fig = new Configuration();
         fig.setString("jobName", jobName);
         env.getConfig().setGlobalJobParameters(fig);
-        /**source kafka**/
+        /**source kafka
+         * */
         Properties props = new Properties();
         props.setProperty("bootstrap.servers", "web01:9092,web02:9092,web04:9092");
         props.setProperty("group.id", kafkaGroup);
@@ -56,7 +70,8 @@ public class JobDstBusiness {
         DataStreamSource<String> stream1 = createStream(env, props, topicList, params);
 
         //风控mq数据的topic
-        /**处理 etl*/
+        /**处理 etl
+         * */
         stream1.filter(json -> kafkaFilter(json))
                 .map(jsonData -> {
                     try {

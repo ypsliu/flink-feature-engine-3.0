@@ -13,8 +13,22 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * @author yanggang
+ * @version 1.0
+ * @date 2019-11-01
+ * @describe kafka连接对象
+ * @since jdk 1.8
+ */
 @Slf4j
 public class Kafka {
+    /**
+     * @param env       流环境
+     * @param props     配置信息
+     * @param topicList 主题list
+     * @param params    提交参数
+     * @return 返回输入数据源流
+     */
     public static DataStreamSource<String> consumer(StreamExecutionEnvironment env, Properties props, List<String> topicList, ParameterTool params) {
         /*statType is latest or history
          * if the is latest offset is setStartFromLatest
@@ -40,6 +54,11 @@ public class Kafka {
         return env.addSource(consumer);
     }
 
+    /**
+     * @param props 配置信息
+     * @param topic 主题
+     * @return 返回kafka生产者对象
+     */
     public static FlinkKafkaProducer<String> producer(Properties props, String topic) {
 
         FlinkKafkaProducer<String> myProducer = new FlinkKafkaProducer<String>(

@@ -14,6 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * @author yanggang
+ * @version 1.0
+ * @date 2019-11-01
+ * @describe 三方数据计算job入口
+ * @since jdk 1.8
+ */
 @Slf4j
 public class JobDstThreeData {
 

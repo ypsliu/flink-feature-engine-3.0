@@ -6,7 +6,13 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * @author yanggang
+ * @version 1.0
+ * @date 2019-01-01
+ * @describe 字符串工具类
+ * @since jdk 1.8
+ */
 public final class StringUtil {
 
     private static final String EMPTY = "";
@@ -332,6 +338,11 @@ public final class StringUtil {
         return true;
     }
 
+    /**
+     * @param dataStr
+     * @param da
+     * @return
+     */
     //判断String转为double后是否大于给定的值
     public static Boolean isLargerThen(String dataStr, double da) {
         boolean res = false;

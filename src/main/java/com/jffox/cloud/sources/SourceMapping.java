@@ -10,8 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * @author yanggang
+ * @version 1.0
+ * @date 2019-10-01
+ * @describe 数据源映射对象类
+ * @since jdk 1.8
+ */
 public class SourceMapping {
-
+    /**
+     * @param mappingId kafka实例配置方法输入id
+     * @return 返回kafka返回连接实例地址
+     */
     public static Properties getProperties(Integer mappingId) {
         String[] args = null;
         Configuration envConfig = null;
@@ -29,6 +39,10 @@ public class SourceMapping {
         return properties;
     }
 
+    /**
+     * @param mappingId 消费kafka-topic主题id
+     * @return 消费kafka-topic主题list
+     */
     public static List<String> getTopicList(Integer mappingId) {
         List<String> topicList = new ArrayList<String>();
         if (mappingId != null) {
@@ -44,6 +58,7 @@ public class SourceMapping {
         }
         return topicList;
     }
+
     public static List<String> getDataItemList(Integer mappingId) {
 
         List<String> dataItemList = new ArrayList<String>();

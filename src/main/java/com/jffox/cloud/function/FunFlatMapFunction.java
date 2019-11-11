@@ -10,10 +10,22 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.metrics.Counter;
 import org.apache.flink.util.Collector;
 
+/**
+ * @author yanggang
+ * @version 1.0
+ * @date 2019-11-01
+ * @describe flapMap算子继承类
+ * @since jdk 1.8
+ */
 @Slf4j
 public class FunFlatMapFunction extends RichFlatMapFunction<String, Tuple2<String, Integer>> {
     Counter counter;
 
+    /**
+     * @param s         输入字符串
+     * @param collector 输出tuple2表格
+     * @throws Exception
+     */
     @Override
     public void flatMap(String s, Collector<Tuple2<String, Integer>> collector) throws Exception {
         this.counter.inc();
@@ -35,6 +47,10 @@ public class FunFlatMapFunction extends RichFlatMapFunction<String, Tuple2<Strin
 
     }
 
+    /**
+     * @param parameters metrics配置
+     * @throws Exception
+     */
     @Override
     public void open(Configuration parameters) throws Exception {
         this.counter = getRuntimeContext()

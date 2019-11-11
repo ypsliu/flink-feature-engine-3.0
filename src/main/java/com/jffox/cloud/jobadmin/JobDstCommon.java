@@ -23,10 +23,11 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * flink流计算工程入口类：可调用其他算子函数通过继承类进行的方法重载
- *
  * @author yanggang
+ * @version 1.0
  * @date 2019-11-01
+ * @describe  公共数据计算job入口
+ * @since jdk 1.8
  */
 @Slf4j
 public class JobDstCommon {
