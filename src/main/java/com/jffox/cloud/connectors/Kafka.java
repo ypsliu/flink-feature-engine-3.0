@@ -10,9 +10,9 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 
+import java.lang.annotation.Documented;
 import java.util.List;
 import java.util.Properties;
-
 /**
  * @author yanggang
  * @version 1.0
@@ -20,6 +20,7 @@ import java.util.Properties;
  * @describe kafka连接对象
  * @since jdk 1.8
  */
+
 @Slf4j
 public class Kafka {
     /**
