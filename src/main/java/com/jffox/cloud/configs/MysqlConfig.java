@@ -34,7 +34,8 @@ public class MysqlConfig {
             in = Resources.getResourceAsStream("mybatis-config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("e",e);
+           // e.printStackTrace();
         }
     }
 
