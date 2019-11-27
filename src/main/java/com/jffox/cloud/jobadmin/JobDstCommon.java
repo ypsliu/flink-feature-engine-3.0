@@ -36,8 +36,8 @@ public class JobDstCommon {
     public static void main(String[] args) throws Exception {
         log.info("###############StreamExecutionEnvironment is starting #######################");
         /*环境参数获取*/
-        final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        //final StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
+        //final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        final StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
         Configuration envConfig = new Configuration();
         Properties kafkaConsumerProperties = new Properties();
         ParameterTool params = null;
@@ -69,7 +69,7 @@ public class JobDstCommon {
              * 如果不设置检查点路径将会已配置全局为准
              * */
             //env.setStateBackend(new FsStateBackend("hdfs:///flink/checkpoints/" + flinkJobName));
-            env.setStateBackend(new RocksDBStateBackend("hdfs:///flink/checkpoints/" + flinkJobName));
+            //env.setStateBackend(new RocksDBStateBackend("hdfs:///flink/checkpoints/" + flinkJobName));
             /*kafka数据源加载配置*/
             kafkaConsumerProperties = KafkaConsumerConfig.getConfig(args, envConfig);
             List<String> topicList = new ArrayList<>();

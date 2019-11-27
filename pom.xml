@@ -157,7 +157,12 @@ under the License.
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.46</version>
         </dependency>
-        <!---->
+        <!--文件读取配置-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.1.3.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -312,6 +317,24 @@ under the License.
                     <scope>compile</scope>
                 </dependency>
             </dependencies>
+        </profile>
+        <!-- 测试环境-->
+        <profile>
+            <id>test</id>
+            <build>
+                <filters>
+                    <filter>profile/test.properties</filter>
+                </filters>
+            </build>
+        </profile>
+        <!-- 生产环境-->
+        <profile>
+            <id>pro</id>
+            <build>
+                <filters>
+                    <filter>profile/pro.properties</filter>
+                </filters>
+            </build>
         </profile>
     </profiles>
 
