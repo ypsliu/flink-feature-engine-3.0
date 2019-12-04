@@ -2,6 +2,7 @@ package com.jffox.cloud.function;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jffox.cloud.constants.Exceptions;
+import com.jffox.cloud.mapper.TSysCodeMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.api.common.functions.RichFilterFunction;
 import org.apache.flink.configuration.Configuration;
@@ -17,7 +18,6 @@ import org.apache.flink.metrics.Counter;
 @Slf4j
 public class FunFilterFunction extends RichFilterFunction<String> {
     Counter counter;
-
     /**
      * @param s 输入字符串
      * @return 返回 true or false
