@@ -70,7 +70,9 @@ public class JobDstCommon {
              * */
             //env.setStateBackend(new FsStateBackend("hdfs:///flink/checkpoints/" + flinkJobName));
             //env.setStateBackend(new RocksDBStateBackend("hdfs:///flink/checkpoints/" + flinkJobName));
-            /*kafka数据源加载配置*/
+            /**
+             * kafka数据源加载配置
+             * */
             kafkaConsumerProperties = KafkaConsumerConfig.getConfig(args, envConfig);
             List<String> topicList = new ArrayList<>();
             topicList = SourceMapping.getTopicList(1);
